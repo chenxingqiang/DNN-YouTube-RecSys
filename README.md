@@ -1,1 +1,6 @@
 # deep_neural_networks_for_youtube_recommendations
+1.paper下存放的是 deep neural networks for youtube recommendations 文章
+2.python_code下存放的是 deep neural networks for youtube recommendations对应的模型代码，代码主要在dnn.py中
+3.spark_code（与python代码不完全对应，可以分开看）下存放的是在spark中用scala加载tensorflow模型并预测，如下：
+a. MakeDataOne和MakeDataTwo主要是造数据，然后保存为tfrecords到hdfs文件中
+b. PredictUserVectorMakeDataOne、ItemEmbeddingMakeDataOne、PredictUserVectorMakeDataTwo和ItemEmbeddingMakeDataTwo主要是加载tensorflow模型并预测
