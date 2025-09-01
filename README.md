@@ -1,47 +1,102 @@
-# Deep Neural Networks for YouTube Recommendations
+# DNN-YouTube-RecSys
 
-## Overview
+A clean, well-organized implementation of Deep Neural Networks for YouTube Recommendations, featuring both Python (TensorFlow) and Scala (Spark) implementations.
 
-This repository provides a comprehensive implementation of a deep neural network-based recommendation system similar to YouTube's. The repo is organized to include the core Python implementation of the model and a Spark-based Scala solution for data generation and model serving.
+## 🏗️ Project Structure
 
-### Repository Structure
+```
+DNN-YouTube-RecSys/
+├── src/
+│   ├── python/           # Python implementation using TensorFlow
+│   │   ├── models/       # Core DNN model and loading utilities
+│   │   ├── data/         # Data processing and TFRecords handling
+│   │   ├── utils/        # TensorBoard and utility functions
+│   │   ├── examples/     # Usage examples and tutorials
+│   │   └── reference/    # Custom layers and feature engineering
+│   └── scala/            # Scala implementation using Spark
+│       ├── models/       # Feature building and embedding models
+│       ├── data/         # Data generation scripts
+│       ├── prediction/   # User vector and item embedding prediction
+│       ├── core/         # Base Spark application classes
+│       ├── examples/     # Spark usage examples
+│       └── config/       # Environment configuration files
+├── data/                 # Data storage and model artifacts
+│   ├── tfrecords/        # Training and evaluation data
+│   └── checkpoints/      # Model checkpoints and saved models
+├── tests/                # Test suites for both Python and Scala
+├── docs/                 # Research paper and documentation
+├── requirements.txt      # Python dependencies
+├── pom.xml              # Maven configuration for Scala
+└── .gitignore           # Git ignore patterns
+```
 
-1. **`py` Directory**: Contains the main Python code for model training and evaluation using TensorFlow.
-   - **`deep_neural_networks_for_youtube_recommendations/`**: The central directory for Python-based code, divided into several sub-modules:
-     - **`dnn/`**: Houses the core deep learning model (`dnn.py`) and supporting scripts for data preparation, training, and logging.
-       - **Model Checkpoints (`ckpt/`)**: Stores TensorFlow checkpoints and metadata for model states at various training stages.
-       - **Scripts for Data Handling & Training**:
-         - **`data2tfrecords.py`**: Converts raw input data into TFRecords format for training.
-         - **`read_tfrecords.py`**: Reads TFRecords for both training and evaluation.
-         - **`tensor_board.py`**: Integrates TensorBoard for visual monitoring of model training metrics.
-       - **Model Loading & Exporting**:
-         - **`load_dnn_model.py`**: Facilitates loading of trained models for prediction tasks.
-         - **`modelpath/`**: Stores the saved TensorFlow model.
-       - **Training Data (`tfrecords/`)**: Includes separate TFRecord files for training and evaluation.
-     - **`example/`**: Provides usage examples with Python scripts to demonstrate how to train and test the model (`example1.py`, `example2.py`).
-     - **`reference/`**: Offers reference implementations for custom network layers and feature engineering in TensorFlow.
-     - **`tfrecords_methods/`**: Contains additional scripts for handling TFRecords, including data conversion and reading methods.
+## 🚀 Quick Start
 
-2. **`spark` Directory**: Provides the Scala-based code for using Spark to generate data and make predictions using the TensorFlow model.
-   - **`explore/`**: Contains data generation and model inference scripts:
-     - **Data Generation**:
-       - **`MakeDataOne.scala`** & **`MakeDataTwo.scala`**: Generate synthetic datasets and store them as TFRecords in HDFS.
-     - **Model Prediction**:
-       - **`PredictUserVectorMakeDataOne.scala`**, **`PredictUserVectorMakeDataTwo.scala`**: Load and use the TensorFlow model to predict user vectors.
-       - **`ItemEmbeddingMakeDataOne.scala`**, **`ItemEmbeddingMakeDataTwo.scala`**: Predict item embeddings using the same model.
-   - **`sparkapplication/`**: Base Spark classes for local and online model execution.
-   - **`vars/`**: Contains configuration files (`vars.prod.properties`, `vars.sit.properties`) for different environments.
-   - **`example/`**: Demonstrates basic Spark operations using example Scala scripts.
+### Python (TensorFlow) Implementation
 
-3. **`paper` Directory**: Contains the original research paper "Deep Neural Networks for YouTube Recommendations," which provides background and theoretical context for the model implemented in this repository.
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
+2. **Train the model:**
+   ```bash
+   cd src/python
+   python models/dnn.py
+   ```
 
-## How to Use
+3. **Run examples:**
+   ```bash
+   python examples/example1.py
+   python examples/example2.py
+   ```
 
-- **Python Model Training & Evaluation**: The core TensorFlow-based model can be trained and evaluated using the provided Python scripts. Data can be prepared in TFRecords format, and TensorBoard is used for visualization.
-- **Spark-Based Data Generation & Prediction**: The Spark/Scala code allows you to generate data at scale, load TensorFlow models, and run predictions efficiently, leveraging distributed processing.
+### Scala (Spark) Implementation
 
-## Conclusion
+1. **Build the project:**
+   ```bash
+   mvn clean compile
+   ```
 
-This repository provides a complete toolkit for developing and deploying a deep neural network-based recommendation system, with capabilities for both Python-based training and Spark-based data handling. The implementation offers flexibility and scalability for recommendation tasks in YouTube-style environments. The supporting paper gives further insight into the model's background and theory.
+2. **Run examples:**
+   ```bash
+   mvn exec:java -Dexec.mainClass="example.Example1"
+   ```
+
+## 📚 Key Components
+
+### Python Implementation
+- **`models/dnn.py`**: Core deep neural network model
+- **`models/load_dnn_model.py`**: Model loading and inference utilities
+- **`data/data2tfrecords.py`**: Data conversion to TFRecords format
+- **`utils/tensor_board.py`**: TensorBoard integration for training visualization
+
+### Scala Implementation
+- **`models/FeatureBuilder.scala`**: Feature engineering utilities
+- **`prediction/PredictUserVector.scala`**: User vector prediction
+- **`prediction/ItemEmbeddingPredictor.scala`**: Item embedding generation
+- **`core/BaseSparkLocal.scala`**: Local Spark application base class
+
+## 🔧 Configuration
+
+- **Python**: Configure via `requirements.txt` and environment variables
+- **Scala**: Configure via `src/scala/config/` properties files
+- **Data**: Store training data in `data/tfrecords/` directory
+- **Models**: Save checkpoints in `data/checkpoints/` directory
+
+## 📖 Documentation
+
+- **Research Paper**: `docs/Deep Neural Networks for YouTube Recommendations.pdf`
+- **Code Examples**: See `src/python/examples/` and `src/scala/examples/`
+- **Reference Implementations**: Check `src/python/reference/` for custom components
+
+## 🤝 Contributing
+
+1. Follow the established directory structure
+2. Add tests in the appropriate `tests/` subdirectory
+3. Update documentation for any new features
+4. Ensure both Python and Scala implementations remain consistent
+
+## 📄 License
+
+This project implements the research described in "Deep Neural Networks for YouTube Recommendations" paper. Please refer to the original paper for academic citations and research context.

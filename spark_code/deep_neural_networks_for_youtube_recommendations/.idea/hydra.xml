@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="HydraSettings">
-    <option name="hydraStorePath" value="D:\IntelliJIDEA\IDEAProject\deep_neural_networks_for_youtube_recommendations\.hydra\idea" />
-    <option name="noOfCores" value="4" />
-    <option name="projectRoot" value="D:\IntelliJIDEA\IDEAProject\deep_neural_networks_for_youtube_recommendations" />
-    <option name="sourcePartitioner" value="auto" />
-  </component>
-</project>
