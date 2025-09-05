@@ -1,4 +1,4 @@
-# DNN-YouTube-RecSys
+# YouTube-DNN-RecSys: Deep Neural Networks for YouTube Recommendations
 
 A clean, well-organized implementation of Deep Neural Networks for YouTube Recommendations, featuring both Python (TensorFlow) and Scala (Spark) implementations.
 
